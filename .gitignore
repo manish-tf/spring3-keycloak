@@ -1,0 +1,69 @@
+# Maven target directory
+/target/
+
+# Eclipse IDE files
+*.classpath
+*.project
+.settings/
+bin/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+out/
+
+# VSCode settings
+.vscode/
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Java-specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment files
+.env
+*.env
+
+# IntelliJ's project configuration files
+*.ipr
+*.iws
+*.iml
+
+# Maven Wrapper
+.mvn/
+!**/mvnw
+!**/mvnw.cmd
+
+# Docker files
+docker-compose.override.yml
+Dockerfile
+
+# Spring Boot specific
+*.properties
+*.yml
+*.yaml
+
+# JAR file for the project
+*.jar
+*.war
+
+# Node modules (if you're using Node.js for frontend)
+node_modules/
+
+# Yarn files (if you're using Yarn)
+yarn-error.log
+
+# Build directories
+build/
