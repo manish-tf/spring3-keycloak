@@ -1,16 +1,18 @@
 package com.edw.config;
 
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
 
 /**
  * <pre>
@@ -23,6 +25,14 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+	
+	@Value("${logout.url}")
+    private String logoutUrl;
+
+    @GetMapping("/getLogoutUrl")
+    public String getLogoutUrl() {
+        return logoutUrl;
+    }
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -48,7 +58,7 @@ public class SecurityConfiguration {
                                 .fullyAuthenticated()
                 .and()
                     .logout()
-                    .logoutSuccessUrl("http://localhost:8080/realms/External/protocol/openid-connect/logout?redirect_uri=http://localhost:8081/");
+                    .logoutSuccessUrl(logoutUrl);
 
         return http.build();
     }
